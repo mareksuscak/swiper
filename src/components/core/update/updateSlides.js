@@ -194,7 +194,19 @@ export default function updateSlides() {
     }
     slidesSizesGrid.push(slideSize);
 
-    if (params.centeredSlides) {
+    if (params.snapTo === 'end') {
+      if (i !== 0) slidePosition = slidePosition + slideSize + spaceBetween;
+      if (Math.abs(slidePosition) < 1 / 1000) slidePosition = 0;
+      if (params.roundLengths) slidePosition = Math.floor(slidePosition);
+      if (
+        (index - Math.min(swiper.params.slidesPerGroupSkip, index)) %
+          swiper.params.slidesPerGroup ===
+        0
+      )
+        snapGrid.push(Math.max(slidePosition - swiperSize, 0));
+      slidesGrid.push(Math.max(slidePosition - swiperSize, 0));
+      if (i === 0) slidePosition = slidePosition + slideSize + spaceBetween;
+    } else if (params.centeredSlides) {
       slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween;
       if (prevSlideSize === 0 && i !== 0)
         slidePosition = slidePosition - swiperSize / 2 - spaceBetween;

@@ -108,6 +108,13 @@ class Swiper {
     swiper.originalParams = extend({}, swiper.params);
     swiper.passedParams = extend({}, params);
 
+    // Backward compatibility
+    if (swiper.params.snapTo === 'center') {
+      swiper.params.centeredSlides = true;
+    } else {
+      swiper.params.centeredSlides = false;
+    }
+
     // add event listeners
     if (swiper.params && swiper.params.on) {
       Object.keys(swiper.params.on).forEach((eventName) => {
