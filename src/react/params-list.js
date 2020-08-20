@@ -33,6 +33,7 @@ const paramsList = [
   '_slidesPerColumnFill',
   '_slidesPerGroup',
   '_slidesPerGroupSkip',
+  '_snapTo',
   '_centeredSlides',
   '_centeredSlidesBounds',
   '_slidesOffsetBefore',
